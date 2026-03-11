@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Book details – BookStore" />
+  <title>Book Details – BookStore</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="hidden">
+    <div class="spinner"></div>
+    <div class="spinner-text">Loading book…</div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo" aria-label="BookStore Home">
+        <div class="logo-icon">📚</div>
+        <span class="logo-text">Book<span>Store</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Books</a></li>
+        <li><a href="index.html#categories-section">Categories</a></li>
+        <li><a href="#">Deals</a></li>
+      </ul>
+
+      <div class="nav-search">
+        <span class="nav-search-icon">🔍</span>
+        <input
+          type="search"
+          id="nav-search-input"
+          placeholder="Search by title, author…"
+          aria-label="Search books"
+          autocomplete="off"
+          onkeydown="if(event.key==='Enter'){ window.location.href='index.html?q='+encodeURIComponent(this.value); }"
+        />
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-cart-btn" onclick="window.location.href='cart.html'" aria-label="Shopping Cart">
+          🛒
+          <span class="cart-badge hidden" id="cart-badge">0</span>
+        </button>
+        <div class="nav-avatar" title="User Account">U</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="page-container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span id="breadcrumb-category">Category</span>
+        <span>›</span>
+        <span id="breadcrumb-title">Book Title</span>
+      </nav>
+
+      <!-- Back Link -->
+      <a id="back-link" class="back-link" role="button" tabindex="0" aria-label="Back to book list">
+        ← Back to Book List
+      </a>
+
+      <!-- Detail Layout -->
+      <div id="detail-content" class="detail-layout">
+
+        <!-- Left: Cover -->
+        <div>
+          <div class="detail-cover" id="detail-cover">
+            <div class="detail-cover-book">
+              <span class="icon">📖</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Info -->
+        <div class="detail-info">
+          <div class="detail-category-row">
+            <span class="badge badge-primary" id="detail-category">Category</span>
+            <span id="detail-stock"></span>
+          </div>
+
+          <h1 class="detail-title" id="detail-title">Loading…</h1>
+          <p class="detail-author" id="detail-author">by Author</p>
+
+          <div class="detail-rating">
+            <span id="detail-stars">★★★★☆</span>
+            <span class="review-count" id="detail-review-count">(0 Reviews)</span>
+          </div>
+
+          <div class="detail-price-row">
+            <span class="detail-price" id="detail-price">$0.00</span>
+            <span id="detail-price-orig"></span>
+            <span id="detail-discount"></span>
+          </div>
+
+          <div>
+            <div class="qty-label">Quantity</div>
+            <div class="qty-control">
+              <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+              <span class="qty-val" id="qty-val">1</span>
+              <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <div class="detail-actions">
+            <button class="btn btn-add-cart" id="add-cart-btn" aria-label="Add to Cart">
+              🛒 ADD TO CART
+            </button>
+            <button class="btn btn-wishlist" id="wishlist-btn" aria-label="Add to Wishlist">
+              ♡ Add to Wishlist
+            </button>
+          </div>
+
+          <!-- Description -->
+          <div class="detail-description">
+            <h3>About This Book</h3>
+            <p id="detail-description">Loading book description…</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">📚</div>
+            <span class="logo-text">Book<span>Store</span></span>
+          </a>
+          <p>Your curated online library for the world's most influential books.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html">Best Sellers</a></li>
+            <li><a href="index.html">New Releases</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BookStore Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/book-detail.js"></script>
+</body>
+</html>

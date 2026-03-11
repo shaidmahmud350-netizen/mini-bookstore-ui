@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BookStore – Your curated online library. Browse, search, and buy books across all genres." />
+  <title>BookStore – Browse Books</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="hidden">
+    <div class="spinner"></div>
+    <div class="spinner-text">Loading books…</div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo" aria-label="BookStore Home">
+        <div class="logo-icon">📚</div>
+        <span class="logo-text">Book<span>Store</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Books</a></li>
+        <li><a href="#categories-section">Categories</a></li>
+        <li><a href="#">Deals</a></li>
+      </ul>
+
+      <div class="nav-search">
+        <span class="nav-search-icon">🔍</span>
+        <input
+          type="search"
+          id="nav-search-input"
+          placeholder="Search by title, author…"
+          aria-label="Search books"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-cart-btn" id="nav-cart-btn" onclick="window.location.href='cart.html'" aria-label="Shopping Cart">
+          🛒
+          <span class="cart-badge hidden" id="cart-badge">0</span>
+        </button>
+        <div class="nav-avatar" title="User Account">U</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="page-container">
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Discover Your Next<br>Favourite Book</h1>
+        <p>Browse thousands of titles from classic literature to modern programming. Quality reads, fast shipping.</p>
+        <div class="hero-search">
+          <input
+            type="search"
+            id="hero-search-input"
+            placeholder="Search books, authors, or ISBN…"
+            aria-label="Hero search"
+            autocomplete="off"
+          />
+          <button class="btn btn-primary" id="hero-search-btn">Search</button>
+        </div>
+      </section>
+
+      <!-- Filter Bar -->
+      <section id="categories-section" aria-label="Filter and sort">
+        <div class="filter-bar">
+          <div id="category-chips" class="category-chips" role="group" aria-label="Category filter">
+            <button class="chip active" data-cat="">All</button>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap">
+            <span class="results-count" id="results-count"></span>
+            <select id="sort-select" class="sort-select" aria-label="Sort books">
+              <option value="">Default</option>
+              <option value="price_asc">Price: Low → High</option>
+              <option value="price_desc">Price: High → Low</option>
+              <option value="title_asc">Title: A → Z</option>
+              <option value="title_desc">Title: Z → A</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Books Grid -->
+      <section aria-label="Book listing">
+        <div id="books-grid" class="books-grid">
+          <!-- Populated by books.js -->
+        </div>
+        <div id="pagination" class="pagination" role="navigation" aria-label="Pagination">
+          <!-- Populated by books.js -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">📚</div>
+            <span class="logo-text">Book<span>Store</span></span>
+          </a>
+          <p>Your curated online library for the world's most influential books. Quality reads, fast shipping, and a community for book lovers.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">New Releases</a></li>
+            <li><a href="#">Gift Cards</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BookStore Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/books.js"></script>
+</body>
+</html>

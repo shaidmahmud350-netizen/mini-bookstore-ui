@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your Shopping Cart – BookStore" />
+  <title>Your Cart – BookStore</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="hidden">
+    <div class="spinner"></div>
+    <div class="spinner-text">Updating cart…</div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo" aria-label="BookStore Home">
+        <div class="logo-icon">📚</div>
+        <span class="logo-text">Book<span>Store</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Books</a></li>
+        <li><a href="index.html#categories-section">Categories</a></li>
+        <li><a href="#">Deals</a></li>
+      </ul>
+
+      <div class="nav-search">
+        <span class="nav-search-icon">🔍</span>
+        <input
+          type="search"
+          id="nav-search-input"
+          placeholder="Search by title, author…"
+          aria-label="Search books"
+          autocomplete="off"
+          onkeydown="if(event.key==='Enter'){ window.location.href='index.html?q='+encodeURIComponent(this.value); }"
+        />
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-cart-btn active-page" aria-label="Shopping Cart (current page)">
+          🛒
+          <span class="cart-badge hidden" id="cart-badge">0</span>
+        </button>
+        <div class="nav-avatar" title="User Account">U</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="page-container">
+
+      <!-- Cart Layout -->
+      <div class="cart-layout">
+
+        <!-- Left: Cart Items -->
+        <div>
+          <div class="cart-header">
+            <h1>Your Shopping Cart</h1>
+            <p id="cart-count-text">Loading…</p>
+          </div>
+
+          <div id="cart-items-list" class="cart-items-list">
+            <!-- Populated by cart.js -->
+          </div>
+
+          <a id="continue-shopping" class="continue-shopping" role="button" tabindex="0" aria-label="Continue Shopping">
+            ← Continue Shopping
+          </a>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div>
+          <div class="order-summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-rows">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span class="val" id="summary-subtotal">$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span class="val green">Free</span>
+              </div>
+              <div class="summary-row">
+                <span>Estimated Tax (8%)</span>
+                <span class="val" id="summary-tax">$0.00</span>
+              </div>
+            </div>
+
+            <hr class="summary-divider" />
+
+            <div class="total-row">
+              <span>Total Price</span>
+              <span class="total-price" id="summary-total">$0.00</span>
+            </div>
+
+            <button class="btn-checkout" id="checkout-btn" aria-label="Proceed to Checkout">
+              🔒 Proceed to Checkout
+            </button>
+
+            <div class="ssl-note">
+              🔒 Secure SSL Checkout
+            </div>
+
+            <!-- Promo Code -->
+            <div class="promo-section">
+              <div class="promo-label">Have a Promo Code?</div>
+              <div class="promo-input-row">
+                <input
+                  type="text"
+                  id="promo-input"
+                  class="promo-input"
+                  placeholder="Enter code (try SAVE10)"
+                  aria-label="Promo code"
+                />
+                <button class="promo-btn" id="promo-apply-btn" aria-label="Apply promo">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">📚</div>
+            <span class="logo-text">Book<span>Store</span></span>
+          </a>
+          <p>Your curated online library for the world's most influential books.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html">All Books</a></li>
+            <li><a href="#">Best Sellers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BookStore Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
