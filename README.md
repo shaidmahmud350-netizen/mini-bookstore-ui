@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📚 Mini Online Bookstore
 
 A full-stack Mini Online Bookstore with a Spring Boot REST API backend and a pure HTML/CSS/Vanilla JS + jQuery frontend.
@@ -156,3 +157,6 @@ Matches the Figma design with:
 ---
 
 *Submitted – March 2026*
+=======
+# mini-bookstore-ui
+>>>>>>> eeb5b5c5e9bc36a97cc1b63ec768cc5a4932d084

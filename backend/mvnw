@@ -1,0 +1,31 @@
+#!/bin/sh
+# Maven Wrapper script for Unix/Linux/macOS
+# Licensed to the Apache Software Foundation (ASF)
+
+set -e
+
+MAVEN_WRAPPER_JAR="$(dirname "$0")/.mvn/wrapper/maven-wrapper.jar"
+MAVEN_WRAPPER_PROPERTIES="$(dirname "$0")/.mvn/wrapper/maven-wrapper.properties"
+
+DISTRIBUTION_URL=$(grep "distributionUrl" "$MAVEN_WRAPPER_PROPERTIES" | cut -d'=' -f2-)
+
+MAVEN_HOME="${HOME}/.m2/wrapper/dists/$(basename "${DISTRIBUTION_URL%.zip}")"
+
+if [ ! -d "$MAVEN_HOME" ]; then
+  mkdir -p "$MAVEN_HOME"
+  echo "Downloading Maven from $DISTRIBUTION_URL"
+  if command -v curl > /dev/null 2>&1; then
+    curl -fsSL "$DISTRIBUTION_URL" -o "/tmp/maven-dist.zip"
+  elif command -v wget > /dev/null 2>&1; then
+    wget -q "$DISTRIBUTION_URL" -O "/tmp/maven-dist.zip"
+  else
+    echo "Error: neither curl nor wget found."
+    exit 1
+  fi
+  unzip -q /tmp/maven-dist.zip -d "$MAVEN_HOME"
+  rm /tmp/maven-dist.zip
+fi
+
+MAVEN_EXECUTABLE=$(find "$MAVEN_HOME" -name "mvn" -type f | head -1)
+
+exec "$MAVEN_EXECUTABLE" "$@"
